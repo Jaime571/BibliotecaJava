@@ -8,12 +8,16 @@ public class frmMenu extends javax.swing.JFrame {
     
 
     
-    public frmMenu() {
+    public frmMenu(Pila<Alumno> pilaAlumno) {
         initComponents();
-        Alumno a = new Alumno(18100026, "Estela", "Barajas", 21);
-        pilaAlumno.push(a);
-        a = new Alumno(18100097, "Jaime", "Garcia", 22);
-        pilaAlumno.push(a);
+        this.pilaAlumno = pilaAlumno;
+//        Alumno a = new Alumno(18100026, "Estela", "Barajas", 21);
+//        this.pilaAlumno.push(a);
+//        a = new Alumno(18100097, "Jaime", "Garcia", 22);
+//        this.pilaAlumno.push(a);
+    }
+    private frmMenu() {
+        
     }
 
     @SuppressWarnings("unchecked")
