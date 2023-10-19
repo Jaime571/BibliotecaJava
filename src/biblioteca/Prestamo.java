@@ -49,7 +49,9 @@ public class Prestamo {
         this.fechaDevolucion = fechaDevolucion;
     }
     
-    
-
-    
+    public String toString(){
+        String res = "";
+        res = this.getAlumno() + "\t" + this.getLibro() + "\t" + this.getFechaPrestamo() + "\t" + this.getFechaDevolucion() + "\n"; 
+        return res;
+    }
 }

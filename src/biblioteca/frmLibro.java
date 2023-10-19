@@ -2,10 +2,19 @@
 package biblioteca;
 
 public class frmLibro extends javax.swing.JFrame {
-//    public Pila<Libro> pila = new Pila<Libro>();
+    public Pila<Alumno> pilaAlumno = new Pila<Alumno>();
+    public Pila<Libro> pila = new Pila<Libro>();
+    public Pila<Prestamo> pilaPrestamo = new Pila<Prestamo>();
 
-    public frmLibro() {
+    public frmLibro(Pila<Alumno> pilaAlumno, Pila<Libro> p, Pila<Prestamo> pilaPrestamo) {
         initComponents();
+        this.pilaAlumno = pilaAlumno;
+        pila = p;
+        this.pilaPrestamo = pilaPrestamo;
+    }
+    
+    private frmLibro() {
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -131,15 +140,15 @@ public class frmLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfAnioActionPerformed
 
     private void jbtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegresarActionPerformed
-//        frmMenu f = new frmMenu(pila);
-//        f.setVisible(true); //Muestra la ventana de Formulario
-//        this.setVisible(false); //Hace invisible la ventana actual
+        frmMenu f = new frmMenu(pilaAlumno, pila, pilaPrestamo);
+        f.setVisible(true); //Muestra la ventana de Formulario
+        this.setVisible(false); //Hace invisible la ventana actual
     }//GEN-LAST:event_jbtnRegresarActionPerformed
 
     private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed
         if(!jtfISBN.getText().isEmpty() && !jtfTitulo.getText().isEmpty() && !jtfAutor.getText().isEmpty() && !jtfAnio.getText().isEmpty() ){
             Libro aux = new Libro(Integer.parseInt(jtfISBN.getText()), jtfTitulo.getText(), jtfAutor.getText(),Integer.parseInt(jtfAnio.getText()));
-//            pilaLibro.push(aux);
+            pila.push(aux);
         }
     }//GEN-LAST:event_jbtnAgregarActionPerformed
 

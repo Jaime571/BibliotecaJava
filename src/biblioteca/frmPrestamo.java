@@ -3,8 +3,19 @@ package biblioteca;
 
 public class frmPrestamo extends javax.swing.JFrame {
 
-    public frmPrestamo() {
+    public Pila<Alumno> pilaAlumno = new Pila<Alumno>();
+    public Pila<Libro> pilaLibro = new Pila<Libro>();
+    public Pila<Prestamo> pila = new Pila<Prestamo>();
+    
+    public frmPrestamo(Pila<Alumno> pilaAlumno, Pila<Libro> pilaLibro, Pila<Prestamo> p) {
         initComponents();
+        this.pilaAlumno = pilaAlumno;
+        this.pilaLibro = pilaLibro;
+        pila = p;
+    }
+    
+    private frmPrestamo() {
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -129,9 +140,9 @@ public class frmPrestamo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegresarActionPerformed
-//        frmMenu f = new frmMenu();
-//        f.setVisible(true); //Muestra la ventana de Formulario
-//        this.setVisible(false); //Hace invisible la ventana actual
+        frmMenu f = new frmMenu(pilaAlumno, pilaLibro, pila);
+        f.setVisible(true); //Muestra la ventana de Formulario
+        this.setVisible(false); //Hace invisible la ventana actual
     }//GEN-LAST:event_jbtnRegresarActionPerformed
 
     private void jtfFechaDevoluciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfFechaDevoluciónActionPerformed
@@ -141,7 +152,7 @@ public class frmPrestamo extends javax.swing.JFrame {
     private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed
         if(!jtfAlumno.getText().isEmpty() && !jtfLibro.getText().isEmpty() && !jtfFechaPrestamo.getText().isEmpty() && !jtfFechaDevolución.getText().isEmpty() ){
             Prestamo aux = new Prestamo(jtfAlumno.getText(), jtfLibro.getText(), jtfFechaPrestamo.getText(),jtfFechaDevolución.getText());
-//            pilaPrestamo.push(aux);
+            pila.push(aux);
         }
     }//GEN-LAST:event_jbtnAgregarActionPerformed
 

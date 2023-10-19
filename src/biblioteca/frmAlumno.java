@@ -3,14 +3,14 @@ package biblioteca;
 
 public class frmAlumno extends javax.swing.JFrame {
     public Pila<Alumno> pila = new Pila<Alumno>();
+    public Pila<Libro> pilaLibro = new Pila<Libro>();
+    public Pila<Prestamo> pilaPrestamo = new Pila<Prestamo>();
     
-    public frmAlumno(Pila<Alumno> p) {
+    public frmAlumno(Pila<Alumno> p, Pila<Libro> pilaLibro, Pila<Prestamo> pilaPrestamo) {
         initComponents();
         pila = p;
-//        while (!p.isEmpty()) {
-//            Alumno elemento = p.pop();
-//            pila.push(elemento);
-//        }
+        this.pilaLibro = pilaLibro;
+        this.pilaPrestamo = pilaPrestamo;
     }
 
     private frmAlumno() {
@@ -133,7 +133,7 @@ public class frmAlumno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegresarActionPerformed
-        frmMenu f = new frmMenu(pila);
+        frmMenu f = new frmMenu(pila, pilaLibro, pilaPrestamo);
         f.setVisible(true); //Muestra la ventana de Formulario
         this.setVisible(false); //Hace invisible la ventana actual
     }//GEN-LAST:event_jbtnRegresarActionPerformed
