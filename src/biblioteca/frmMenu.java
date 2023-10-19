@@ -3,18 +3,19 @@ package biblioteca;
 
 public class frmMenu extends javax.swing.JFrame {
     public Pila<Alumno> pilaAlumno = new Pila<Alumno>();
-    public Pila<Libro> pilaLibro;
-    public Pila<Prestamo> pilaPrestamo;
+    public Pila<Libro> pilaLibro = new Pila<Libro>();
+    public Pila<Prestamo> pilaPrestamo = new Pila<Prestamo>();
     
 
     
-    public frmMenu(Pila<Alumno> pilaAlumno) {
+    public frmMenu(Pila<Alumno> pilaAlumno, Pila<Libro> pilaLibro, Pila<Prestamo> pilaPrestamo) {
         initComponents();
-        this.pilaAlumno = pilaAlumno;
-//        Alumno a = new Alumno(18100026, "Estela", "Barajas", 21);
-//        this.pilaAlumno.push(a);
-//        a = new Alumno(18100097, "Jaime", "Garcia", 22);
-//        this.pilaAlumno.push(a);
+        if(!pilaAlumno.isEmpty())
+            this.pilaAlumno = pilaAlumno;
+        if(!pilaLibro.isEmpty())
+            this.pilaLibro = pilaLibro;
+        if(!pilaPrestamo.isEmpty())
+            this.pilaPrestamo = pilaPrestamo;
     }
     private frmMenu() {
         
@@ -175,51 +176,77 @@ public class frmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiInsertarLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInsertarLActionPerformed
-        frmLibro f = new frmLibro();
+        frmLibro f = new frmLibro(pilaAlumno, pilaLibro, pilaPrestamo);
         f.setVisible(true); //Muestra la ventana de Formulario
         this.setVisible(false); //Hace invisible la ventana actual
     }//GEN-LAST:event_jmiInsertarLActionPerformed
 
     private void jmiInsertarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInsertarPActionPerformed
-        frmPrestamo f = new frmPrestamo();
+        frmPrestamo f = new frmPrestamo(pilaAlumno, pilaLibro, pilaPrestamo);
         f.setVisible(true); //Muestra la ventana de Formulario
         this.setVisible(false); //Hace invisible la ventana actual
     }//GEN-LAST:event_jmiInsertarPActionPerformed
 
     private void jmiInsertarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInsertarAActionPerformed
-
-        frmAlumno f = new frmAlumno(pilaAlumno);
+        frmAlumno f = new frmAlumno(pilaAlumno, pilaLibro, pilaPrestamo);
         f.setVisible(true); //Muestra la ventana de Formulario
         this.setVisible(false); //Hace invisible la ventana actual
     }//GEN-LAST:event_jmiInsertarAActionPerformed
 
     private void jmiMostrarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMostrarAActionPerformed
-        this.jtaResultado.setText(pilaAlumno.toString());
+        if(!pilaAlumno.isEmpty())
+            this.jtaResultado.setText(pilaAlumno.toString());
+        else
+            this.jtaResultado.setText("Sin datos para mostrar...");
     }//GEN-LAST:event_jmiMostrarAActionPerformed
 
     private void jmiMostrarLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMostrarLActionPerformed
-        
+        if(!pilaLibro.isEmpty())
+            this.jtaResultado.setText(pilaLibro.toString());
+        else
+            this.jtaResultado.setText("Sin datos para mostrar...");
     }//GEN-LAST:event_jmiMostrarLActionPerformed
 
     private void jmiMostrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMostrarPActionPerformed
-        
+        if(!pilaPrestamo.isEmpty())
+            this.jtaResultado.setText(pilaPrestamo.toString());
+        else
+            this.jtaResultado.setText("Sin datos para mostrar...");
     }//GEN-LAST:event_jmiMostrarPActionPerformed
 
     private void jmiEliminarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEliminarAActionPerformed
-        
+        if(!pilaAlumno.isEmpty()){
+            pilaAlumno.pop();
+            this.jtaResultado.setText("");
+            if(!pilaAlumno.isEmpty())
+                this.jtaResultado.setText(pilaAlumno.toString());
+            else
+                this.jtaResultado.setText("Sin datos para mostrar...");
+        }
     }//GEN-LAST:event_jmiEliminarAActionPerformed
 
     private void jmiEliminarLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEliminarLActionPerformed
-        
+        if(!pilaLibro.isEmpty()){
+            pilaLibro.pop();
+            this.jtaResultado.setText("");
+            if(!pilaLibro.isEmpty())
+                this.jtaResultado.setText(pilaLibro.toString());
+            else
+                this.jtaResultado.setText("Sin datos para mostrar...");
+        }
     }//GEN-LAST:event_jmiEliminarLActionPerformed
 
     private void jmiEliminarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEliminarPActionPerformed
-        
+        if(!pilaPrestamo.isEmpty()){
+            pilaPrestamo.pop();
+            this.jtaResultado.setText("");
+            if(!pilaPrestamo.isEmpty())
+                this.jtaResultado.setText(pilaPrestamo.toString());
+            else
+                this.jtaResultado.setText("Sin datos para mostrar...");
+        }
     }//GEN-LAST:event_jmiEliminarPActionPerformed
 
-    public void insertDataAlumno(Alumno a){
-        this.pilaAlumno.push(a);
-    }
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

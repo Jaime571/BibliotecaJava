@@ -31,6 +31,27 @@ public class Libro {
     public void setAñoPublicacion(int añoPublicacion) {
         this.añoPublicacion = añoPublicacion;
     }
+
+    public int getISBN() {
+        return ISBN;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public int getAñoPublicacion() {
+        return añoPublicacion;
+    }
     
+    public String toString(){
+    String res = "";
+    res = this.getISBN() + "\t" + this.getTitulo() + "\t" + this.getAutor() + "\t" + this.getAñoPublicacion() + "\n";
+    return res;
+    }
     
 }
