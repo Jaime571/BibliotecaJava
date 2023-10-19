@@ -1,9 +1,12 @@
+import biblioteca.Alumno;
+import biblioteca.Pila;
 import biblioteca.Usuario;
 import biblioteca.frmMenu;
 
 public class frmInicio extends javax.swing.JFrame {
    private int tam=5;
-    private Usuario[] aUsuarios = new Usuario[tam];
+   private Usuario[] aUsuarios = new Usuario[tam];
+   public Pila<Alumno> pilaAlumno = new Pila<Alumno>();
 
     public frmInicio() {
         initComponents();
@@ -136,7 +139,7 @@ public class frmInicio extends javax.swing.JFrame {
                 aUsuarios[i].getContraseña().equals(con)){
                 jlbMensaje.setText("Ingresa al sistema");
                 //Se pasa como parámetros: Usuario y ventana actual
-                frmMenu f = new frmMenu();
+                frmMenu f = new frmMenu(pilaAlumno);
                 f.setVisible(true); //Muestra la ventana de Formulario
                 this.setVisible(false); //Hace invisible la ventana actual
                 valido=true;

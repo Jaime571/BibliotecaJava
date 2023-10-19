@@ -2,6 +2,7 @@
 package biblioteca;
 
 public class frmLibro extends javax.swing.JFrame {
+//    public Pila<Libro> pila = new Pila<Libro>();
 
     public frmLibro() {
         initComponents();
@@ -130,9 +131,9 @@ public class frmLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfAnioActionPerformed
 
     private void jbtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegresarActionPerformed
-        frmMenu f = new frmMenu();
-        f.setVisible(true); //Muestra la ventana de Formulario
-        this.setVisible(false); //Hace invisible la ventana actual
+//        frmMenu f = new frmMenu(pila);
+//        f.setVisible(true); //Muestra la ventana de Formulario
+//        this.setVisible(false); //Hace invisible la ventana actual
     }//GEN-LAST:event_jbtnRegresarActionPerformed
 
     private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed

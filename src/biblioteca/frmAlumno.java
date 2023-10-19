@@ -133,7 +133,7 @@ public class frmAlumno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegresarActionPerformed
-        frmMenu f = new frmMenu();
+        frmMenu f = new frmMenu(pila);
         f.setVisible(true); //Muestra la ventana de Formulario
         this.setVisible(false); //Hace invisible la ventana actual
     }//GEN-LAST:event_jbtnRegresarActionPerformed
